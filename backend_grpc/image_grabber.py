@@ -1,4 +1,3 @@
-# image_receiver_server.py
 import os
 import base64
 import logging
@@ -6,14 +5,16 @@ from concurrent import futures
 import grpc
 import image_grabber_pb2
 import image_grabber_pb2_grpc
+from backend_redis.RedisMesssageBroker import RedisMessageBroker
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'   )
 logger = logging.getLogger(__name__)
 
-class ImageGrabberServicer(image_grabber_pb2_grpc.ImageGrabberServicer):    
+class ImageGrabberGrpcService(image_grabber_pb2_grpc.ImageGrabberServicer):    
     def __init__(self, upload_dir="./received_images"):
         self.upload_dir = upload_dir
         os.makedirs(self.upload_dir, exist_ok=True)
+        self.redis_client = RedisMessageBroker() # Initialize Redis client here
 
     def SendImage(self, request, context):
         try:

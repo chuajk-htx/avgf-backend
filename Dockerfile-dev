@@ -6,10 +6,15 @@ RUN apt-get update && apt-get install -y build-essential
 
 RUN pip install --no-cache-dir --upgrade pip
 
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN python -m grpc_tools.protoc --proto_path=./backend_grpc --python_out=./backend_grpc --grpc_python_out=./backend_grpc image_grabber.proto
+
 EXPOSE 8000
-EXPOSE 8501
-EXPOSE 1883
-EXPOSE 80
-EXPOSE 443
+EXPOSE 50051
 
 CMD [ "python", "./your-daemon-or-script.py" ]"
