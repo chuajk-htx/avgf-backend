@@ -1,5 +1,5 @@
 import redis
-import redis.asyncio as aioredis
+import aioredis
 import json
 
 class RedisMessageBroker:
@@ -18,7 +18,7 @@ class RedisMessageBroker:
         except Exception as e:
             print(f"Error publishing message to Redis: {str(e)}")
     
-    async def subscribe_from_ws(self, connection_manager)):
+    async def subscribe_from_ws(self):
         try:
             pubsub = self.redis_ws.pubsub()
             await pubsub.subscribe(self.channel)

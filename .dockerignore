@@ -4,7 +4,7 @@ __pycache__
 *.pyo
 *.pyd
 .Python
-env
+#env
 pip-log.txt
 pip-delete-this-directory.txt
 .tox
@@ -16,6 +16,9 @@ coverage.xml
 *.cover
 *.log
 .git
+.gitignore
+.dockerignore
 .mypy_cache
 .pytest_cache
 .hypothesis
+venv
