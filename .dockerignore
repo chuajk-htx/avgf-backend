@@ -22,3 +22,5 @@ coverage.xml
 .pytest_cache
 .hypothesis
 venv
+.python-version
+

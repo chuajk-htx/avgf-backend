@@ -5,7 +5,7 @@ from concurrent import futures
 import grpc
 import image_grabber_pb2
 import image_grabber_pb2_grpc
-from backend_redis.RedisMesssageBroker import RedisMessageBroker
+from backend_redis.RedisClient import RedisMessageBroker
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'   )
 logger = logging.getLogger(__name__)

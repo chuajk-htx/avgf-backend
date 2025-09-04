@@ -41,7 +41,6 @@ class ConnectionManager:
 
     async def send_message(self, message: dict, client_id: str):
         if client_id in self.active_connections:
-            websocket = self.active_connections[client_id]
             await self.active_connections[client_id].send_text(json.dumps(message))
 
     async def broadcast(self, message: str):
